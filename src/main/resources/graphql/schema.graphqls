@@ -1,0 +1,54 @@
+type Query {
+    users: [User]
+    categories: [Category]
+    expenses: [Expense]
+}
+
+type Mutation {
+    authenticate(login: String!, password: String!): Boolean
+    upsertUser(userInput: UserInput!): User
+    upsertCategory(categoryInput: CategoryInput!): Category
+    upsertExpense(expenseInput: ExpenseInput!): Expense
+}
+
+type User {
+    login: String
+    password: String
+    name: String
+}
+
+input UserInput {
+    login: ID!
+    password: String!
+    name: String!
+}
+
+type Category {
+    id: ID
+    name: String
+    createdBy: User
+}
+
+input CategoryInput {
+    id: ID
+    name: String!
+    createdBy: ID!
+}
+
+type Expense {
+    id: ID
+    category: Category
+    description: String
+    amount: Float
+    date: String
+    createdBy: User
+}
+
+input ExpenseInput {
+    id: ID
+    categoryId: ID!
+    description: String
+    amount: Float!
+    date: String
+    createdBy: ID!
+}
