@@ -22,6 +22,11 @@ public class ExpenseController {
         return expenseService.getAll();
     }
 
+    @QueryMapping(value = "expense")
+    public Expense expense(@Argument(value = "id") Long id) {
+        return expenseService.getById(id);
+    }
+
     @MutationMapping(value = "upsertExpense")
     public Expense upsert(@Argument(value = "expenseInput") ExpenseInput input) {
         return expenseService.upsert(input);

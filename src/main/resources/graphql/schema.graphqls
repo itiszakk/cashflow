@@ -1,18 +1,21 @@
 type Query {
     users: [User]
+    user(login: ID!): User
     categories: [Category]
+    category(id: ID!): Category
     expenses: [Expense]
+    expense(id: ID!): Expense
 }
 
 type Mutation {
-    authenticate(login: String!, password: String!): Boolean
+    authenticate(login: ID!, password: String!): Boolean
     upsertUser(userInput: UserInput!): User
     upsertCategory(categoryInput: CategoryInput!): Category
     upsertExpense(expenseInput: ExpenseInput!): Expense
 }
 
 type User {
-    login: String
+    login: ID
     password: String
     name: String
 }

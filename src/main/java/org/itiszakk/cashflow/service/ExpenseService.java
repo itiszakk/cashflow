@@ -9,5 +9,7 @@ public interface ExpenseService {
 
     List<Expense> getAll();
 
+    Expense getById(Long id);
+
     Expense upsert(ExpenseInput input);
 }

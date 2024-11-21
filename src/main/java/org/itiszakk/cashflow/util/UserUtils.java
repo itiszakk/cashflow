@@ -1,9 +1,9 @@
-package org.itiszakk.cashflow.mapper;
+package org.itiszakk.cashflow.util;
 
 import org.itiszakk.cashflow.domain.user.User;
 import org.itiszakk.cashflow.domain.user.UserEntity;
 
-public class UserMapper {
+public class UserUtils {
 
     public static User convert(UserEntity source) {
         return User.builder()

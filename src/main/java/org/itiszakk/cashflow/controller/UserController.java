@@ -22,6 +22,11 @@ public class UserController {
         return userService.getAll();
     }
 
+    @QueryMapping(value = "user")
+    public User user(@Argument(value = "login") String login) {
+        return userService.getByLogin(login);
+    }
+
     @MutationMapping(value = "upsertUser")
     public User upsert(@Argument(value = "userInput") UserInput input) {
         return userService.upsert(input);

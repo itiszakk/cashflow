@@ -22,6 +22,11 @@ public class CategoryController {
         return categoryService.getAll();
     }
 
+    @QueryMapping(value = "category")
+    public Category category(@Argument(value = "id") Long id) {
+        return categoryService.getById(id);
+    }
+
     @MutationMapping(value = "upsertCategory")
     public Category upsert(@Argument(value = "categoryInput") CategoryInput input) {
         return categoryService.upsert(input);
