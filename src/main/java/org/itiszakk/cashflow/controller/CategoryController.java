@@ -17,6 +17,11 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
+    @QueryMapping(value = "categoriesByUser")
+    public List<Category> categories(@Argument(value = "login") String login) {
+        return categoryService.getByUser(login);
+    }
+
     @QueryMapping(value = "categories")
     public List<Category> categories() {
         return categoryService.getAll();

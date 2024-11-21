@@ -4,6 +4,7 @@ import org.itiszakk.cashflow.domain.category.Category;
 import org.itiszakk.cashflow.domain.category.CategoryEntity;
 import org.itiszakk.cashflow.domain.category.CategoryInput;
 import org.itiszakk.cashflow.domain.user.User;
+import org.itiszakk.cashflow.domain.user.UserEntity;
 import org.itiszakk.cashflow.exception.impl.CategoryNotFoundException;
 import org.itiszakk.cashflow.util.CategoryUtils;
 import org.itiszakk.cashflow.util.UserUtils;
@@ -23,6 +24,13 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Autowired
     private CategoryRepository categoryRepository;
+
+    @Override
+    public List<Category> getByUser(String login) {
+        return categoryRepository.findByCreatedByLogin(login).stream()
+                .map(CategoryUtils::convert)
+                .toList();
+    }
 
     @Override
     public List<Category> getAll() {

@@ -1,18 +1,18 @@
 package org.itiszakk.cashflow.service.impl;
 
 import org.itiszakk.cashflow.domain.category.Category;
-import org.itiszakk.cashflow.exception.impl.ExpenseNotFoundException;
-import org.itiszakk.cashflow.util.CategoryUtils;
-import org.itiszakk.cashflow.service.CategoryService;
 import org.itiszakk.cashflow.domain.expense.Expense;
 import org.itiszakk.cashflow.domain.expense.ExpenseEntity;
 import org.itiszakk.cashflow.domain.expense.ExpenseInput;
-import org.itiszakk.cashflow.util.ExpenseUtils;
-import org.itiszakk.cashflow.repository.ExpenseRepository;
-import org.itiszakk.cashflow.service.ExpenseService;
 import org.itiszakk.cashflow.domain.user.User;
-import org.itiszakk.cashflow.util.UserUtils;
+import org.itiszakk.cashflow.exception.impl.ExpenseNotFoundException;
+import org.itiszakk.cashflow.repository.ExpenseRepository;
+import org.itiszakk.cashflow.service.CategoryService;
+import org.itiszakk.cashflow.service.ExpenseService;
 import org.itiszakk.cashflow.service.UserService;
+import org.itiszakk.cashflow.util.CategoryUtils;
+import org.itiszakk.cashflow.util.ExpenseUtils;
+import org.itiszakk.cashflow.util.UserUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +29,13 @@ public class ExpenseServiceImpl implements ExpenseService {
 
     @Autowired
     private UserService userService;
+
+    @Override
+    public List<Expense> getByUser(String login) {
+        return expenseRepository.findByCreatedByLogin(login).stream()
+                .map(ExpenseUtils::convert)
+                .toList();
+    }
 
     @Override
     public List<Expense> getAll() {

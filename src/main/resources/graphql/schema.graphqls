@@ -1,10 +1,12 @@
 type Query {
-    users: [User]
     user(login: ID!): User
-    categories: [Category]
+    users: [User]
     category(id: ID!): Category
-    expenses: [Expense]
+    categoriesByUser(login: ID!): [Category]
+    categories: [Category]
     expense(id: ID!): Expense
+    expensesByUser(login: ID!): [Expense]
+    expenses: [Expense]
 }
 
 type Mutation {

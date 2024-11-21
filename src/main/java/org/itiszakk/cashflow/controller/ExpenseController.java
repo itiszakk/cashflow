@@ -17,6 +17,11 @@ public class ExpenseController {
     @Autowired
     private ExpenseService expenseService;
 
+    @QueryMapping(value = "expensesByUser")
+    public List<Expense> expenses(@Argument(value = "login") String login) {
+        return expenseService.getByUser(login);
+    }
+
     @QueryMapping(value = "expenses")
     public List<Expense> expenses() {
         return expenseService.getAll();

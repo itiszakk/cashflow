@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface ExpenseService {
 
+    List<Expense> getByUser(String login);
+
     List<Expense> getAll();
 
     Expense getById(Long id);
