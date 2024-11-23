@@ -4,9 +4,10 @@ import org.itiszakk.cashflow.domain.user.User;
 import org.itiszakk.cashflow.domain.user.UserEntity;
 import org.itiszakk.cashflow.domain.user.UserInput;
 import org.itiszakk.cashflow.exception.impl.UserNotFoundException;
-import org.itiszakk.cashflow.util.UserUtils;
 import org.itiszakk.cashflow.repository.UserRepository;
+import org.itiszakk.cashflow.security.TokenProvider;
 import org.itiszakk.cashflow.service.UserService;
+import org.itiszakk.cashflow.util.UserUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     PasswordEncoder passwordEncoder;
+
+    @Autowired
+    TokenProvider tokenProvider;
 
     @Override
     public List<User> getAll() {
@@ -51,8 +55,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean authenticate(String login, String password) {
+    public String authenticate(String login, String password) {
+
         User user = getByLogin(login);
-        return passwordEncoder.matches(password, user.getPassword());
+
+        return user != null && passwordEncoder.matches(password, user.getPassword())
+                ? tokenProvider.generate(user)
+                : null;
     }
 }

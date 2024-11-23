@@ -10,8 +10,8 @@ public interface UserService {
     List<User> getAll();
 
     User getByLogin(String login);
-
+    
     User upsert(UserInput input);
 
-    boolean authenticate(String login, String password);
+    String authenticate(String login, String password);
 }

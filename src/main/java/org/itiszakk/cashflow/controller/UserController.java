@@ -33,7 +33,7 @@ public class UserController {
     }
 
     @MutationMapping(value = "authenticate")
-    public boolean authenticate(@Argument(value = "login") String login,
+    public String authenticate(@Argument(value = "login") String login,
                                 @Argument(value = "password") String password) {
         return userService.authenticate(login, password);
     }

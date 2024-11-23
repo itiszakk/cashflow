@@ -10,7 +10,7 @@ type Query {
 }
 
 type Mutation {
-    authenticate(login: ID!, password: String!): Boolean
+    authenticate(login: ID!, password: String!): String
     upsertUser(userInput: UserInput!): User
     upsertCategory(categoryInput: CategoryInput!): Category
     upsertExpense(expenseInput: ExpenseInput!): Expense
