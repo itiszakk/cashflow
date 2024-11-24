@@ -1,7 +1,7 @@
 package org.itiszakk.cashflow.service;
 
-import org.itiszakk.cashflow.domain.expense.Expense;
-import org.itiszakk.cashflow.domain.expense.ExpenseInput;
+import org.itiszakk.cashflow.domain.Expense;
+import org.itiszakk.cashflow.controller.ExpenseInput;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package org.itiszakk.cashflow.util;
 
-import org.itiszakk.cashflow.domain.expense.Expense;
-import org.itiszakk.cashflow.domain.expense.ExpenseEntity;
+import org.itiszakk.cashflow.domain.Expense;
+import org.itiszakk.cashflow.repository.ExpenseEntity;
 
 public class ExpenseUtils {
 

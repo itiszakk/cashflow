@@ -1,7 +1,6 @@
 package org.itiszakk.cashflow.controller;
 
-import org.itiszakk.cashflow.domain.user.User;
-import org.itiszakk.cashflow.domain.user.UserInput;
+import org.itiszakk.cashflow.domain.User;
 import org.itiszakk.cashflow.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;

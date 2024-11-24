@@ -1,7 +1,7 @@
 package org.itiszakk.cashflow.util;
 
-import org.itiszakk.cashflow.domain.user.User;
-import org.itiszakk.cashflow.domain.user.UserEntity;
+import org.itiszakk.cashflow.domain.User;
+import org.itiszakk.cashflow.repository.UserEntity;
 
 public class UserUtils {
 

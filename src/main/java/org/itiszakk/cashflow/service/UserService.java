@@ -1,7 +1,7 @@
 package org.itiszakk.cashflow.service;
 
-import org.itiszakk.cashflow.domain.user.User;
-import org.itiszakk.cashflow.domain.user.UserInput;
+import org.itiszakk.cashflow.domain.User;
+import org.itiszakk.cashflow.controller.UserInput;
 
 import java.util.List;
 

@@ -1,11 +1,10 @@
-package org.itiszakk.cashflow.domain.category;
+package org.itiszakk.cashflow.repository;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.itiszakk.cashflow.domain.user.UserEntity;
 
 @Data
 @NoArgsConstructor

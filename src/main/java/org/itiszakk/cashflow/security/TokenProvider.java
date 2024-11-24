@@ -3,7 +3,7 @@ package org.itiszakk.cashflow.security;
 import io.jsonwebtoken.Jwe;
 import io.jsonwebtoken.JwtParser;
 import io.jsonwebtoken.Jwts;
-import org.itiszakk.cashflow.domain.user.User;
+import org.itiszakk.cashflow.domain.User;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 

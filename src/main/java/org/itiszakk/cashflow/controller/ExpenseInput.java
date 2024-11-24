@@ -1,4 +1,4 @@
-package org.itiszakk.cashflow.domain.expense;
+package org.itiszakk.cashflow.controller;
 
 import lombok.Builder;
 import lombok.Data;

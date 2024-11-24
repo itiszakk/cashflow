@@ -1,7 +1,7 @@
 package org.itiszakk.cashflow.util;
 
-import org.itiszakk.cashflow.domain.category.Category;
-import org.itiszakk.cashflow.domain.category.CategoryEntity;
+import org.itiszakk.cashflow.domain.Category;
+import org.itiszakk.cashflow.repository.CategoryEntity;
 
 public class CategoryUtils {
 

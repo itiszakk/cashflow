@@ -1,7 +1,6 @@
 package org.itiszakk.cashflow.controller;
 
-import org.itiszakk.cashflow.domain.category.Category;
-import org.itiszakk.cashflow.domain.category.CategoryInput;
+import org.itiszakk.cashflow.domain.Category;
 import org.itiszakk.cashflow.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;

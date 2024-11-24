@@ -1,7 +1,7 @@
 package org.itiszakk.cashflow.service;
 
-import org.itiszakk.cashflow.domain.category.Category;
-import org.itiszakk.cashflow.domain.category.CategoryInput;
+import org.itiszakk.cashflow.domain.Category;
+import org.itiszakk.cashflow.controller.CategoryInput;
 
 import java.util.List;
 

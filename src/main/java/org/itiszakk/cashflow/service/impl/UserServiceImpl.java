@@ -1,8 +1,8 @@
 package org.itiszakk.cashflow.service.impl;
 
-import org.itiszakk.cashflow.domain.user.User;
-import org.itiszakk.cashflow.domain.user.UserEntity;
-import org.itiszakk.cashflow.domain.user.UserInput;
+import org.itiszakk.cashflow.domain.User;
+import org.itiszakk.cashflow.repository.UserEntity;
+import org.itiszakk.cashflow.controller.UserInput;
 import org.itiszakk.cashflow.exception.impl.UserNotFoundException;
 import org.itiszakk.cashflow.repository.UserRepository;
 import org.itiszakk.cashflow.security.TokenProvider;

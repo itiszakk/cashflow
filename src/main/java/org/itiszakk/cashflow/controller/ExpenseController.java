@@ -1,7 +1,6 @@
 package org.itiszakk.cashflow.controller;
 
-import org.itiszakk.cashflow.domain.expense.Expense;
-import org.itiszakk.cashflow.domain.expense.ExpenseInput;
+import org.itiszakk.cashflow.domain.Expense;
 import org.itiszakk.cashflow.service.ExpenseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;

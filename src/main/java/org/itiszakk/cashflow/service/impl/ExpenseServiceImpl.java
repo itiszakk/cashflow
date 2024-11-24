@@ -1,10 +1,10 @@
 package org.itiszakk.cashflow.service.impl;
 
-import org.itiszakk.cashflow.domain.category.Category;
-import org.itiszakk.cashflow.domain.expense.Expense;
-import org.itiszakk.cashflow.domain.expense.ExpenseEntity;
-import org.itiszakk.cashflow.domain.expense.ExpenseInput;
-import org.itiszakk.cashflow.domain.user.User;
+import org.itiszakk.cashflow.domain.Category;
+import org.itiszakk.cashflow.domain.Expense;
+import org.itiszakk.cashflow.repository.ExpenseEntity;
+import org.itiszakk.cashflow.controller.ExpenseInput;
+import org.itiszakk.cashflow.domain.User;
 import org.itiszakk.cashflow.exception.impl.ExpenseNotFoundException;
 import org.itiszakk.cashflow.repository.ExpenseRepository;
 import org.itiszakk.cashflow.service.CategoryService;

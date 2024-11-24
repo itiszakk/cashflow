@@ -1,8 +1,7 @@
-package org.itiszakk.cashflow.domain.category;
+package org.itiszakk.cashflow.domain;
 
 import lombok.Builder;
 import lombok.Data;
-import org.itiszakk.cashflow.domain.user.User;
 
 @Data
 @Builder

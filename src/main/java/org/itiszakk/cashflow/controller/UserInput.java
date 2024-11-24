@@ -1,11 +1,11 @@
-package org.itiszakk.cashflow.domain.user;
+package org.itiszakk.cashflow.controller;
 
 import lombok.Builder;
 import lombok.Data;
 
 @Data
 @Builder
-public class User {
+public final class UserInput {
 
     private final String login;
     private final String password;

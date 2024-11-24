@@ -1,9 +1,7 @@
-package org.itiszakk.cashflow.domain.expense;
+package org.itiszakk.cashflow.domain;
 
 import lombok.Builder;
 import lombok.Data;
-import org.itiszakk.cashflow.domain.user.User;
-import org.itiszakk.cashflow.domain.category.Category;
 
 import java.time.OffsetDateTime;
 
