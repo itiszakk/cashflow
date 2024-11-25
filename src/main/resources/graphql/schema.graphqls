@@ -51,34 +51,34 @@ type User {
 
 input UserInput {
     login: String
-    password: String!
-    name: String!
+    password: String
+    name: String
 }
 
 type Category {
     id: ID
     name: String
-    createdBy: User
+    createdBy: String
 }
 
 input CategoryInput {
     id: ID
-    name: String!
+    name: String
 }
 
 type Expense {
     id: ID
-    category: Category
+    categoryId: ID
     description: String
     amount: Float
     date: String
-    createdBy: User
+    createdBy: String
 }
 
 input ExpenseInput {
     id: ID
-    categoryId: ID!
+    categoryId: ID
     description: String
-    amount: Float!
+    amount: Float
     date: String
 }

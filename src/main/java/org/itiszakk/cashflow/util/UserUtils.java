@@ -12,12 +12,4 @@ public class UserUtils {
                 .name(source.getName())
                 .build();
     }
-
-    public static UserEntity convert(User source) {
-        return UserEntity.builder()
-                .login(source.getLogin())
-                .password(source.getPassword())
-                .name(source.getName())
-                .build();
-    }
 }

@@ -9,15 +9,7 @@ public class CategoryUtils {
         return Category.builder()
                 .id(source.getId())
                 .name(source.getName())
-                .createdBy(UserUtils.convert(source.getCreatedBy()))
-                .build();
-    }
-
-    public static CategoryEntity convert(Category source) {
-        return CategoryEntity.builder()
-                .id(source.getId())
-                .name(source.getName())
-                .createdBy(UserUtils.convert(source.getCreatedBy()))
+                .createdBy(source.getName())
                 .build();
     }
 }

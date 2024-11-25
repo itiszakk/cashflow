@@ -10,9 +10,9 @@ import java.time.OffsetDateTime;
 public class Expense {
 
     private final Long id;
-    private final Category category;
+    private final Long categoryId;
     private final String description;
     private final Double amount;
     private final OffsetDateTime date;
-    private final User createdBy;
+    private final String createdBy;
 }

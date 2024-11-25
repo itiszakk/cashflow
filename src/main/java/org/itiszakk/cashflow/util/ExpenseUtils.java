@@ -8,22 +8,11 @@ public class ExpenseUtils {
     public static Expense convert(ExpenseEntity source) {
         return Expense.builder()
                 .id(source.getId())
-                .category(CategoryUtils.convert(source.getCategory()))
+                .categoryId(source.getCategory().getId())
                 .description(source.getDescription())
                 .amount(source.getAmount())
                 .date(source.getDate())
-                .createdBy(UserUtils.convert(source.getCreatedBy()))
-                .build();
-    }
-
-    public static ExpenseEntity convert(Expense source) {
-        return ExpenseEntity.builder()
-                .id(source.getId())
-                .category(CategoryUtils.convert(source.getCategory()))
-                .description(source.getDescription())
-                .amount(source.getAmount())
-                .date(source.getDate())
-                .createdBy(UserUtils.convert(source.getCreatedBy()))
+                .createdBy(source.getCreatedBy().getLogin())
                 .build();
     }
 }
