@@ -16,3 +16,8 @@ spring:
   graphql:
     graphiql:
       enabled: true
+
+jwt:
+  token:
+    secret-key: ${JWT_SECRET_KEY}
+    expiration-time: ${JWT_TOKEN_EXPIRATION_TIME:3600}
