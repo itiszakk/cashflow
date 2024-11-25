@@ -1,15 +1,11 @@
 package org.itiszakk.cashflow.security;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 
 import java.util.Collection;
 import java.util.Collections;
 
-@Getter
-@Setter
 public class TokenAuthentication implements Authentication {
 
     private final String token;
@@ -53,5 +49,17 @@ public class TokenAuthentication implements Authentication {
     @Override
     public String getName() {
         return login;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
     }
 }

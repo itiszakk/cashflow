@@ -1,19 +1,19 @@
 package org.itiszakk.cashflow.service.impl;
 
+import org.itiszakk.cashflow.controller.UserInput;
 import org.itiszakk.cashflow.domain.User;
 import org.itiszakk.cashflow.repository.UserEntity;
-import org.itiszakk.cashflow.controller.UserInput;
-import org.itiszakk.cashflow.exception.impl.UserNotFoundException;
 import org.itiszakk.cashflow.repository.UserRepository;
 import org.itiszakk.cashflow.security.TokenProvider;
 import org.itiszakk.cashflow.service.UserService;
+import org.itiszakk.cashflow.util.SecurityUtils;
 import org.itiszakk.cashflow.util.UserUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
+@Transactional
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -27,21 +27,12 @@ public class UserServiceImpl implements UserService {
     TokenProvider tokenProvider;
 
     @Override
-    public List<User> getAll() {
-        return userRepository.findAll().stream()
-                .map(UserUtils::convert)
-                .toList();
-    }
-
-    @Override
     public User getByLogin(String login) {
-        return userRepository.findById(login)
-                .map(UserUtils::convert)
-                .orElseThrow(() -> new UserNotFoundException(login));
+        return UserUtils.convert(userRepository.getReferenceById(login));
     }
 
     @Override
-    public User upsert(UserInput input) {
+    public User create(UserInput input) {
 
         UserEntity entity = UserEntity.builder()
                 .login(input.getLogin())
@@ -49,9 +40,19 @@ public class UserServiceImpl implements UserService {
                 .name(input.getName())
                 .build();
 
-        userRepository.save(entity);
+        return UserUtils.convert(userRepository.save(entity));
+    }
 
-        return UserUtils.convert(entity);
+    @Override
+    public User update(UserInput input) {
+
+        UserEntity entity = UserEntity.builder()
+                .login(SecurityUtils.getCurrentUser())
+                .password(passwordEncoder.encode(input.getPassword()))
+                .name(input.getName())
+                .build();
+
+        return UserUtils.convert(userRepository.save(entity));
     }
 
     @Override

@@ -1,15 +1,12 @@
 package org.itiszakk.cashflow.repository;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
 @Table(name = "category", schema = "cashflow")
 public class CategoryEntity {
@@ -22,6 +19,7 @@ public class CategoryEntity {
     @Column(name = "name")
     private String name;
 
+    @ToString.Exclude
     @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "created_by")
     private UserEntity createdBy;

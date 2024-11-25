@@ -14,9 +14,4 @@ public class ExpenseInput {
     private final String description;
     private final Double amount;
     private final OffsetDateTime date;
-    private final String createdBy;
-
-    public OffsetDateTime getDateOrNow() {
-        return date == null ? OffsetDateTime.now() : date;
-    }
 }

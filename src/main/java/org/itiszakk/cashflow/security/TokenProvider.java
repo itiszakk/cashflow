@@ -1,6 +1,7 @@
 package org.itiszakk.cashflow.security;
 
 import io.jsonwebtoken.Jwe;
+import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtParser;
 import io.jsonwebtoken.Jwts;
 import org.itiszakk.cashflow.domain.User;
@@ -50,7 +51,7 @@ public class TokenProvider {
                 .build();
 
         return parser.parse(token)
-                .accept(Jwe.CLAIMS)
+                .accept(Jws.CLAIMS)
                 .getPayload()
                 .getSubject();
     }

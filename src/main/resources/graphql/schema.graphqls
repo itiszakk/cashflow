@@ -1,18 +1,45 @@
 type Query {
-    user(login: ID!): User
-    users: [User]
-    category(id: ID!): Category
-    categoriesByUser(login: ID!): [Category]
+    """
+    Get current user (requires user token)
+    """
+    user: User
+
+    """
+    Get categories of current user (requires user token)
+    """
     categories: [Category]
-    expense(id: ID!): Expense
-    expensesByUser(login: ID!): [Expense]
+
+    """
+    Get expenses of current user (requires user token)
+    """
     expenses: [Expense]
 }
 
 type Mutation {
+    """
+    Authenticate user by login and password.
+    If authentication is successful, it generates user JWT-token
+    """
     authenticate(login: ID!, password: String!): String
-    upsertUser(userInput: UserInput!): User
+
+    """
+    Create new user
+    """
+    createUser(userInput: UserInput!): User
+
+    """
+    Update current user (requires user token)
+    """
+    updateUser(userInput: UserInput!): User
+
+    """
+    Create new or update existing category of current user (requires user token)
+    """
     upsertCategory(categoryInput: CategoryInput!): Category
+
+    """
+    Create new or update existing expense of current user (requires user token)
+    """
     upsertExpense(expenseInput: ExpenseInput!): Expense
 }
 
@@ -23,7 +50,7 @@ type User {
 }
 
 input UserInput {
-    login: ID!
+    login: String
     password: String!
     name: String!
 }
@@ -37,7 +64,6 @@ type Category {
 input CategoryInput {
     id: ID
     name: String!
-    createdBy: ID!
 }
 
 type Expense {
@@ -55,5 +81,4 @@ input ExpenseInput {
     description: String
     amount: Float!
     date: String
-    createdBy: ID!
 }

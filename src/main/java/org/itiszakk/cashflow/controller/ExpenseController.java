@@ -2,10 +2,12 @@ package org.itiszakk.cashflow.controller;
 
 import org.itiszakk.cashflow.domain.Expense;
 import org.itiszakk.cashflow.service.ExpenseService;
+import org.itiszakk.cashflow.util.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 
 import java.util.List;
@@ -16,21 +18,13 @@ public class ExpenseController {
     @Autowired
     private ExpenseService expenseService;
 
-    @QueryMapping(value = "expensesByUser")
-    public List<Expense> expenses(@Argument(value = "login") String login) {
-        return expenseService.getByUser(login);
-    }
-
+    @PreAuthorize("isAuthenticated()")
     @QueryMapping(value = "expenses")
     public List<Expense> expenses() {
-        return expenseService.getAll();
+        return expenseService.getByUser(SecurityUtils.getCurrentUser());
     }
 
-    @QueryMapping(value = "expense")
-    public Expense expense(@Argument(value = "id") Long id) {
-        return expenseService.getById(id);
-    }
-
+    @PreAuthorize("isAuthenticated()")
     @MutationMapping(value = "upsertExpense")
     public Expense upsert(@Argument(value = "expenseInput") ExpenseInput input) {
         return expenseService.upsert(input);

@@ -9,5 +9,4 @@ public class CategoryInput {
 
     private final Long id;
     private final String name;
-    private final String createdBy;
 }

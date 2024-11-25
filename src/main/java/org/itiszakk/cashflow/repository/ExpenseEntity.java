@@ -1,10 +1,7 @@
 package org.itiszakk.cashflow.repository;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.OffsetDateTime;
 
@@ -34,6 +31,7 @@ public class ExpenseEntity {
     @Column(name = "date")
     private OffsetDateTime date;
 
+    @ToString.Exclude
     @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "created_by")
     private UserEntity createdBy;

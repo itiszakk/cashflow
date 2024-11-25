@@ -1,10 +1,7 @@
 package org.itiszakk.cashflow.repository;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
@@ -26,9 +23,11 @@ public class UserEntity {
     @Column(name = "name")
     private String name;
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "createdBy", cascade = CascadeType.REMOVE)
     private List<ExpenseEntity> expenses;
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "createdBy", cascade = CascadeType.REMOVE)
     private List<CategoryEntity> categories;
 }
