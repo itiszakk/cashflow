@@ -1,6 +1,6 @@
 services:
 
-  cashflow:
+  cashflow-backend:
     image: cashflow-backend:latest
     build:
       context: .
