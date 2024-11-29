@@ -11,7 +11,9 @@ import java.util.Collections;
 public class TokenAuthentication implements Authentication {
 
     private final String token;
+
     private String login;
+
     private boolean isAuthenticated;
 
     @Override

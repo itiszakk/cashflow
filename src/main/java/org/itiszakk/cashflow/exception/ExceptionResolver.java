@@ -19,16 +19,25 @@ public class ExceptionResolver extends DataFetcherExceptionResolverAdapter {
 
         LOGGER.error("Resolving exception", ex);
 
-        if (ex instanceof NotFoundException) {
-            return buildError(ErrorType.NOT_FOUND, ex, env);
+        if (ex instanceof CashflowException cashflowException) {
+            return buildCashflowError(cashflowException, env);
         }
 
-        return buildError(ErrorType.INTERNAL_ERROR, ex, env);
+        return buildInternalError(ex, env);
     }
 
-    private GraphQLError buildError(ErrorType type, Throwable ex, DataFetchingEnvironment env) {
+    private GraphQLError buildCashflowError(CashflowException ex, DataFetchingEnvironment env) {
         return GraphQLError.newError()
-                .errorType(type)
+                .errorType(ex.getType())
+                .message(ex.getMessage())
+                .path(env.getExecutionStepInfo().getPath())
+                .location(env.getField().getSourceLocation())
+                .build();
+    }
+
+    private GraphQLError buildInternalError(Throwable ex, DataFetchingEnvironment env) {
+        return GraphQLError.newError()
+                .errorType(ErrorType.INTERNAL_ERROR)
                 .message(ex.getMessage())
                 .path(env.getExecutionStepInfo().getPath())
                 .location(env.getField().getSourceLocation())
