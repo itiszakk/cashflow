@@ -1,10 +1,20 @@
 services:
 
+  cashflow-frontend:
+    image: cashflow-frontend:latest
+    build: ./frontend
+    environment:
+      BACKEND_PORT: ${BACKEND_PORT}
+      FRONTEND_PORT: ${FRONTEND_PORT}
+    ports:
+      - ${FRONTEND_PORT}:${FRONTEND_PORT}
+    stdin_open: true
+    depends_on:
+      - cashflow-backend
+
   cashflow-backend:
     image: cashflow-backend:latest
-    build:
-      context: .
-      dockerfile: backend/Dockerfile
+    build: ./backend
     environment:
       POSTGRES_HOST: ${POSTGRES_HOST}
       BACKEND_PORT: ${BACKEND_PORT}
